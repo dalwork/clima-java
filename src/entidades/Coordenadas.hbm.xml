@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 6, 2020 2:48:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Coordenadas" table="coordenadas" schema="public" optimistic-lock="version">
+        <id name="idCoordenada" type="int">
+            <column name="id_coordenada" />
+            <generator class="identity"/>
+        </id>
+        <many-to-one name="ciudades" class="entidades.Ciudades" fetch="select">
+            <column name="id_ciudad" />
+        </many-to-one>
+        <property name="latitud" type="big_decimal">
+            <column name="latitud" precision="5" />
+        </property>
+        <property name="longitud" type="big_decimal">
+            <column name="longitud" precision="5" />
+        </property>
+    </class>
+</hibernate-mapping>

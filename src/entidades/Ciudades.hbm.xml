@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 6, 2020 2:48:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Ciudades" table="ciudades" schema="public" optimistic-lock="version">
+        <id name="idCiudad" type="int">
+            <column name="id_ciudad" />
+            <generator class="identity"/>
+        </id>
+        <property name="id" type="java.lang.Integer">
+            <column name="id" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" />
+        </property>
+        <property name="codigo" type="java.lang.Integer">
+            <column name="codigo" />
+        </property>
+        <set name="climases" table="climas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_ciudad" />
+            </key>
+            <one-to-many class="entidades.Climas" />
+        </set>
+        <set name="coordenadases" table="coordenadas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_ciudad" />
+            </key>
+            <one-to-many class="entidades.Coordenadas" />
+        </set>
+    </class>
+</hibernate-mapping>
